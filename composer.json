@@ -1,0 +1,71 @@
+{
+  "type": "wordpress-plugin",
+  "license": "GPL-2.0",
+  "require": {
+    "php": ">=7.4"
+  },
+  "require-dev": {
+    "brain/monkey": "^2.6",
+    "dangoodman/composer-for-wordpress": "^2.0",
+    "dealerdirect/phpcodesniffer-composer-installer": "^0.7",
+    "friendsofphp/php-cs-fixer": "^3.8.0",
+    "humbug/php-scoper": "^0.17",
+    "phpunit/phpunit": "^9.5",
+    "sniccowp/php-scoper-wordpress-excludes": "^5.9"
+  },
+  "config": {
+    "optimize-autoloader": true,
+    "preferred-install": "dist",
+    "sort-packages": true,
+    "classmap-authoritative": false,
+    "classloader-suffix": "PluginSpace",
+    "autoloader-suffix": "PluginSpace",
+    "process-timeout": 0,
+    "vendor-dir": "vendor",
+    "platform-check": false,
+    "allow-plugins": {
+      "dealerdirect/phpcodesniffer-composer-installer": true,
+      "dangoodman/composer-for-wordpress": true
+    }
+  },
+  "autoload": {
+    "psr-4": {
+      "PluginSpace\\": "includes/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Tests\\phpunit\\": "tests/phpunit/"
+    }
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "scripts": {
+    "phpcs": "phpcs -s --report=full --report=source",
+    "phpcs:fix": "phpcbf -w",
+    "format": "./vendor/bin/php-cs-fixer fix --using-cache=no",
+    "test": [
+      "npm run test",
+      "composer install",
+      "phpunit --testsuite PluginTestSuite"
+    ],
+    "coverage": [
+      "XDEBUG_MODE=coverage phpunit --testsuite PluginTestSuite --coverage-html tests/coverage"
+    ],
+    "phpstan": [
+      "phpstan analyze"
+    ],
+    "phpstan-clean": [
+      "phpstan clear-result-cache && phpstan analyze"
+    ],
+    "scope-dependencies": [
+      "@php vendor/bin/php-scoper add-prefix --config=.scoper.inc.php --force --quiet"
+    ],
+    "app:package": [
+      "npm run production",
+      "@composer update --no-dev",
+      "@composer dump-autoload --classmap-authoritative --no-dev",
+      "npm run make-archive"
+    ]
+  }
+}

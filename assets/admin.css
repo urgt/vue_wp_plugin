@@ -1,0 +1,9 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+.my-local-menu li.current {
+  @apply border-green-500;
+  @apply font-semibold;
+  @apply border-b-4;
+}

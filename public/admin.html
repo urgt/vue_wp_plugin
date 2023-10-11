@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" class="bg-gray-100 text-gray-900">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" href="images/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@next/dist/vue.global.prod.js"></script>
+
+  <link href="css/admin.css?id=a687770d26cb70136c314d1c87e598b8?id=e7d0db7017acbb4a9c51" rel="stylesheet">
+  <title>Vue Wordpress Plugin Starter</title>
+</head>
+<body>
+  <nav class="fixed w-full bg-white shadow-lg">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="flex justify-between">
+        <div class="flex space-x-7">
+          <div>
+            <a href="../" class="flex items-center py-4 px-2">
+              <svg xmlns="http:/www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+              </svg>
+              <span class="font-semibold text-gray-500 text-lg">Home</span>
+            </a>
+          </div>
+
+          <!-- Primary Navbar items -->
+          <div class="hidden md:flex items-center space-x-1 wp-menu-open">
+            <ul class="wp-submenu my-local-menu">
+              <li>
+                <a href="#/" class="py-4 px-2 text-gray-500 font-semibold hover:text-green-500 transition duration-300">Dashboard</a>
+              </li>
+              <li>
+                <a href="#/settings" class="py-4 px-2 text-gray-500 font-semibold hover:text-green-500 transition duration-300">Settings</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Secondary Navbar items -->
+        <div class="hidden md:flex items-center space-x-3 ">
+           <iframe src="https://ghbtns.com/github-btn.html?user=niiknow&repo=vue-wp-plugin-starter&type=star&count=true&size=large" frameborder="0" scrolling="0" width="160px" height="30px"></iframe>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div id="vue-admin-app"></div>
+  <script src="js/manifest.js?id=119a1755af89ca2f87c551607772aac2"></script>
+  <script src="js/vendor.js?id=7109042fbae0cf0a5b14dc827f755494"></script>
+  <script src="js/admin.js?id=137cc6cb8e715e36c56ec4ab01b4874d"></script>
+  <style>
+    html, body, #vue-admin-app {
+      height: 100%;
+      width: 100%;
+    }
+
+    .wp-menu-open li {
+      display: inline;
+    }
+
+    .main-wrapper {
+      padding-top: 70px;
+    }
+  </style>
+  <script>
+    var vue_wp_plugin_config_admin = {
+      settings: {
+        enable_debug_messages: false,
+        cleanup_db_on_plugin_uninstall: false,
+        include_post_types: ['page', 'post'],
+        dropdown: 'option1',
+        color: '#000',
+        url: '',
+        email: '',
+        textarea: '',
+        additional_css: ''
+      },
+      rest: {
+        endpoints: {
+          settings: '/wp-json/PluginPrefix/v1/settings'
+        }
+      },
+      settingStructure: {"sections":{"general":"General","advanced":"Advanced","debugging":"Debugging"},"options":{"input":{"name":"Input","description":"Simple text input","section":"general","type":"text","default":""},"email":{"name":"Email","description":"Email type input","section":"general","type":"email","default":""},"url":{"name":"URL","description":"URL input","section":"general","type":"url","default":""},"color":{"name":"Color","description":"Color picker","section":"general","type":"color","default":"#000"},"textarea":{"name":"Textarea","description":"Simple textarea","section":"general","type":"textarea","default":""},"dropdown":{"name":"Select one","description":"Single select dropdown","section":"general","type":"dropdown","default":"option1","options":["option1","option2","option3"]},"additional_css":{"name":"Additional CSS","description":"Add additional CSS to page","section":"advanced","type":"code","default":""},"enable_debug_messages":{"name":"Enable Debug Messages","description":"When enabled the plugin will output debug messages in the JavaScript console.","section":"debugging","type":"toggle","default":false},"cleanup_db_on_plugin_uninstall":{"name":"Cleanup database upon plugin uninstall","description":"When enabled the plugin will remove any database data upon plugin uninstall.","section":"advanced","type":"toggle","default":false},"include_post_types":{"name":"Post Types","description":"Demo multi-select dropdown","section":"general","type":"dropdownMultiselect","optionsCallback":{},"default":["post","page"],"options":["post","page"]}}}
+    }
+  </script>
+</body>
+</html>
